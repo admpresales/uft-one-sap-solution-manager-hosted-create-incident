@@ -34,6 +34,5 @@ Browser("Home").Page("Home").SAPUIButton("Me Button").Click
 AIUtil.FindText("Sign Out").Click
 AIUtil.FindTextBlock("OK").Click
 
-
 AppContext.Close																			'Close the application at the end of your script
 
