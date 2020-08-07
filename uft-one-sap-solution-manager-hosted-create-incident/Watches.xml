@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="AIUtil.FindText(&quot;Sign Out&quot;).Exist" />
+  <WatchEntry1 value="AIUtil.FindTextBlock(&quot;Q) Sign Out&quot;).Exist" />
+</Properties>
