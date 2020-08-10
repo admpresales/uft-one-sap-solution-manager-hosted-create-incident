@@ -1,4 +1,7 @@
 ﻿<Properties>
-  <WatchEntry0 value="AIUtil.FindText(&quot;Sign Out&quot;).Exist" />
-  <WatchEntry1 value="AIUtil.FindTextBlock(&quot;Q) Sign Out&quot;).Exist" />
+  <WatchEntry0 value="AIUtil.FindText(CurrentTime, 1).Exist" />
+  <WatchEntry1 value="Browser(&quot;Home&quot;).Page(&quot;Home&quot;).SAPUITile(&quot;Create Incident Tile&quot;).Exist" />
+  <WatchEntry2 value="AIUtil.FindText(&quot;Create Incident&quot;).Exist" />
+  <WatchEntry3 value="AIUtil.FindText(CurrentTime).Exist" />
+  <WatchEntry4 value="AIUtil.FindText(&quot;1082020144534&quot;).Exist" />
 </Properties>
