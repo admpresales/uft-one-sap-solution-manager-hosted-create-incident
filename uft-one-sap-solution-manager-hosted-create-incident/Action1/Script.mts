@@ -65,59 +65,23 @@ End If
 Browser("Home").Page("Home").SAPUIButton("Me Button").Click									'Click the button to bring up the user menu
 AIUtil.FindTextBlock("Settings").Click														'Click the Settings Text
 AIUtil.FindTextBlock("Appearance").Click													'Click the Appearance text
-'AIUtil.FindTextBlock("SAP Belize").Click
-'SAPTheme = DataTable.Value("Theme")															'Set the value to be selected off of the datatable
-'AIUtil.FindTextBlock(SAPTheme, micFromRight, 1).Click										'Select the value from the variable
 Browser("Home").Page("Home").WebElement("Theme List Value").Click							'Select the value from the variable
-
-'AIUtil.FindTextBlock("Save").Click															'Save the theme selection
-Browser("Home").Page("Home").SAPUIButton("Save").Click
-
-'AIUtil("down_triangle", micNoText, micFromTop, 2).Exist										'Click the down arrow to jump to that part of the tile selections
-'AIUtil("down_triangle", micNoText, micFromBottom, 1).Click									'Click the down arrow to jump to that part of the tile selections
-'If AIUtil.FindTextBlock("IT Service Management").Exist = False Then
-'	AIUtil("down_triangle", micNoText, micFromBottom, 1).Click									'Click the down arrow to jump to that part of the tile selections
-'End If
-Browser("Home").Page("Home").SAPUIButton("More groups").Click
+Browser("Home").Page("Home").SAPUIButton("Save").Click										'Click the Save button
+Browser("Home").Page("Home").SAPUIButton("More groups").Click								'Click the down arrow to bring up the jump to functionality
 AIUtil.FindTextBlock("IT Service Management").Click											'Click the IT Service Management section
 Browser("Home").Page("Home").SAPUITile("Create Incident Tile").Click						'Click the Create Incident Tile
-'AIUtil.FindTextBlock("SMIN").Click															'Click the text to create a standard incident type
 AIUtil.FindTextBlock("Incident (IT Service Management)").Click								'Click the text to create a standard incident type
-
 IncidentNumber = DataTable.Value("IncidentPrefix")											'Build a custom incident name to ensure it is unique, you can use whatever prefix you want in the datatable to ensure you can find it
 CurrentTime = fnRandomNumberWithDateTimeStamp												'Set the variable to be a unique number
 IncidentNumber = IncidentNumber & CurrentTime												'Add the prefix from the datatable to the unique number
-
-'===========================================================
-'Attempting to anchor on the text "Category" as it always is recognized by the OCR, regardless of theme
-'===========================================================
-Set AppContext=Browser("CreationTime:=0")													'Set the variable for what application (in this case the browser) we are acting upon
-AIUtil.SetContext AppContext																'Tell the AI engine to point at the application
-'Set TextAnchor = AIUtil.FindTextBlock("Category")											'Set the anchor text to be the Category label, the * for Title, depending on theme will not have enough contrast to be consistently recognized
-'Set TextAnchor = AIUtil.FindText("Category")												'Set the anchor text to be the Category label, the * for Title, depending on theme will not have enough contrast to be consistently recognized
-'Set TextBoxAnchor = AIUtil("text_box", micNoText, micWithAnchorOnRight, TextAnchor)			'Set the Text box to be against the Text Anchor
-'TextBoxAnchor.Type IncidentNumber															'Enter the unique incident name in the text box
-Browser("Home").Page("Home").WebEdit("Title").Set IncidentNumber
-
-'Set TextAnchor = AIUtil.FindText("Cancel")													'Sometimes (dependent on resolution), the white on blue text isn't being recognized by the OCR, anchor off of the Cancel text
-'Set ButtonAnchor = AIUtil("button", micAnyText, micWithAnchorOnRight, TextAnchor)			'Set the Value field to be an "input" field, with any text, with the IconAnchor to its left
-'ButtonAnchor.Click
-Browser("Home").Page("Home").SAPUIButton("Create").Click
-
+Browser("Home").Page("Home").WebEdit("Title").Set IncidentNumber							'Type in the unique incident title value
+Browser("Home").Page("Home").SAPUIButton("Create").Click									'Click the create button
 Browser("Home").Page("Home").SAPUIButton("Withdraw Button").Click							'Click the Withdraw button, the white on blue is not very high contrast, so using traditional OR
-'AIUtil.FindTextBlock("Yes").Click															'Click the Yes text
-Browser("Home").Page("Home").SAPUIButton("Yes").Click
-'AIUtil.FindTextBlock("Withdrawing Incident").Click
-Do
+Browser("Home").Page("Home").SAPUIButton("Yes").Click										'Click the Yes button
+Do																							'Wait for the system to finish processing before going on
 	wait(1)	
 Loop Until AIUtil.FindText("Withdrawing Incident").Exist(0) = False
-'Navigate to the home page, start and stop from the same place to make it can iterate
-'AIUtil.FindTextBlock("My Incidents").Click													'Click the menu area to bring up the navigation menu
-Browser("Home").Page("Home").WebElement("My Incidents").Click
-
-'If AIUtil.FindTextBlock("Home").Exist = False Then											'Sometimes the click on the application doesn't register, because the application is still processing
-'	AIUtil.FindTextBlock("My Incidents").Click												'Click the menu area to bring up the navigation menu
-'End If
+Browser("Home").Page("Home").WebElement("My Incidents").Click								'CLick the My Incidents object
 AIUtil.FindTextBlock("Home").Click															'Click the Home text
 Browser("Home").Page("Home").SAPUIButton("Me Button").Click									'Click the button to bring up the user menu
 AIUtil.FindText("Sign Out").Click															'Click the Sign Out text
