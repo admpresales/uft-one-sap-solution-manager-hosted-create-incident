@@ -6,6 +6,7 @@
   <WatchEntry12 value="AIUtil(&quot;text_box&quot;, micAnyText, micFromTop, 1).Exist" />
   <WatchEntry13 value="AIUtil(&quot;text_box&quot;, micAnyText, micWithAnchorOnRight, AIUtil.FindText(&quot;Category&quot;)).Exist" />
   <WatchEntry14 value="AIUtil(&quot;text_box&quot;, micAnyText, micFromBottom, 1).Exist" />
+  <WatchEntry15 value="AIUtil.FindTextBlock(&quot;My Incidents&quot;).Exist" />
   <WatchEntry2 value="AIUtil.FindText(&quot;Create Incident&quot;).Exist" />
   <WatchEntry3 value="AIUtil.FindText(CurrentTime).Exist" />
   <WatchEntry4 value="AIUtil.FindText(&quot;1082020144534&quot;).Exist" />
