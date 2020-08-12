@@ -63,7 +63,16 @@ AIUtil.FindTextBlock("SMIN").Click															'Click the text to create a sta
 IncidentNumber = DataTable.Value("IncidentPrefix")											'Build a custom incident name to ensure it is unique, you can use whatever prefix you want in the datatable to ensure you can find it
 CurrentTime = fnRandomNumberWithDateTimeStamp
 IncidentNumber = IncidentNumber & CurrentTime
-AIUtil("text_box", "*Title:").Type IncidentNumber											'Enter the unique incident name
+
+'===========================================================
+'Attempting to anchor on the text "Category" as it always is recognized by the OCR, regardless of theme
+'===========================================================
+Set AppContext=Browser("CreationTime:=0")													'Set the variable for what application (in this case the browser) we are acting upon
+AIUtil.SetContext AppContext																'Tell the AI engine to point at the application
+Set TextAnchor = AIUtil.FindTextBlock("Category")
+Set TextBoxAnchor = AIUtil("text_box", micNoText, micWithAnchorOnRight, TextAnchor)
+TextBoxAnchor.Type IncidentNumber															'Enter the unique incident name
+'AIUtil("text_box", "*Title:").Type IncidentNumber											'Enter the unique incident name
 
 Set TextAnchor = AIUtil.FindText("Cancel")													'Sometimes (dependent on resolution), the white on blue text isn't being recognized by the OCR, anchor off of the Cancel text
 Set ButtonAnchor = AIUtil("button", micAnyText, micWithAnchorOnRight, TextAnchor)			'Set the Value field to be an "input" field, with any text, with the IconAnchor to its left
