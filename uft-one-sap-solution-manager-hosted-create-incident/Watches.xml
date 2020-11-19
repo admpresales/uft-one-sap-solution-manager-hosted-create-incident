@@ -1,18 +1,3 @@
 ﻿<Properties>
-  <WatchEntry0 value="AIUtil.FindText(CurrentTime, micFromTop, 1).Exist" />
-  <WatchEntry1 value="Browser(&quot;Home&quot;).Page(&quot;Home&quot;).SAPUITile(&quot;Create Incident Tile&quot;).Exist" />
-  <WatchEntry10 value="AIUtil(&quot;combo_box&quot;, &quot;Priority&quot;).Exist" />
-  <WatchEntry11 value="AIUtil(&quot;text_box&quot;, micAnyText, micWithAnchorBelow, AIUtil(&quot;combo_box&quot;, &quot;Priority&quot;)).Exist" />
-  <WatchEntry12 value="AIUtil(&quot;text_box&quot;, micAnyText, micFromTop, 1).Exist" />
-  <WatchEntry13 value="AIUtil(&quot;text_box&quot;, micAnyText, micWithAnchorOnRight, AIUtil.FindText(&quot;Category&quot;)).Exist" />
-  <WatchEntry14 value="AIUtil(&quot;text_box&quot;, micAnyText, micFromBottom, 1).Exist" />
-  <WatchEntry15 value="AIUtil.FindTextBlock(&quot;My Incidents&quot;).Exist" />
-  <WatchEntry2 value="AIUtil.FindText(&quot;Create Incident&quot;).Exist" />
-  <WatchEntry3 value="AIUtil.FindText(CurrentTime).Exist" />
-  <WatchEntry4 value="AIUtil.FindText(&quot;1082020144534&quot;).Exist" />
-  <WatchEntry5 value="AIUtil.FindText(&quot;itle&quot;).Exist" />
-  <WatchEntry6 value="AIUtil.FindTextBlock(&quot;Category&quot;).Exist" />
-  <WatchEntry7 value="AIUtil(&quot;input&quot;, micAnyText, micWithAnchorOnRight, TextAnchor).Exist" />
-  <WatchEntry8 value="AIUtil.FindText(&quot;Priority&quot;).Exist" />
-  <WatchEntry9 value="AIUtil(&quot;text_box&quot;, micAnyText, micWithAnchorBelow, AIUtil.FindText(&quot;Priority:&quot;)).Exist" />
+  <WatchEntry0 value="AIUtil.FindTextBlock(&quot;Incident (IT Service Management)&quot;).Exist" />
 </Properties>
