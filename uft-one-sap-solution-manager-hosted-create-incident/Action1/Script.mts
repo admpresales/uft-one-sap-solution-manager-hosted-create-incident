@@ -75,8 +75,13 @@ AIUtil.FindTextBlock("Appearance").Click														'Click the Appearance text
 Browser("Home").Page("Home").WebElement("Theme List Value").Click						'Select the value from the variable
 Browser("Home").Page("Home").SAPUIButton("Save").Click									'Click the Save button
 Browser("Home").Page("Home").SAPUIButton("More groups").Click							'Click the down arrow to bring up the jump to functionality
-
-Browser("Home").Page("Home").SAPUIList("SAPUIList").Select "IT-Servicemanagement"		'Click the IT Service Management section @@ script infofile_;_ZIP::ssf1.xml_;_
+if AIUtil.FindTextBlock("IT Service Management").Exist then
+	AIUtil.FindTextBlock("IT Service Management").Click
+Else
+	'============================================================================================================
+	'The below statement was for when the environment had the menu item text changed.
+	Browser("Home").Page("Home").SAPUIList("SAPUIList").Select "IT Service Management"		'Click the IT Service Management section @@ script infofile_;_ZIP::ssf1.xml_;_
+End If
 Browser("Home").Page("Home").SAPUITile("Create Incident Tile").Click						'Click the Create Incident Tile
 '=============================================================================================================
 'Wait for the correct tile to show up, if it doesn't show up within a minute, abort the script
@@ -111,7 +116,7 @@ Loop Until AIUtil.FindText("Withdrawing Incident").Exist(0) = False
 Browser("Home").Page("Home").WebElement("My Incidents").Click							'CLick the My Incidents object
 AIUtil.FindTextBlock("Home").Click															'Click the Home text
 Browser("Home").Page("Home").SAPUIButton("Me Button").Click							'Click the button to bring up the user menu
-AIUtil.FindText("Sign Out").Click																'Click the Sign Out text
+AIUtil.FindTextBlock("Sign Out").Click														'Click the Sign Out text
 Browser("Home").Page("Home").SAPUIButton("OK").Click									'Click the OK button
 
 AppContext.Close																			'Close the application at the end of your script
