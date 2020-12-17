@@ -1,3 +1,3 @@
 ﻿<Properties>
-  <WatchEntry0 value="AIUtil.FindTextBlock(&quot;IT Service Management&quot;).Exist" />
+  <WatchEntry0 value="Browser(&quot;Home&quot;).Page(&quot;Home&quot;).SAPUIButton(&quot;OK&quot;).Highlight" />
 </Properties>

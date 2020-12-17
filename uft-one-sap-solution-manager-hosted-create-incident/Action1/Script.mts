@@ -72,9 +72,16 @@ End If
 Browser("Home").Page("Home").SAPUIButton("Me Button").Click							'Click the button to bring up the user menu
 AIUtil.FindTextBlock("Settings").Click															'Click the Settings Text
 AIUtil.FindTextBlock("Appearance").Click														'Click the Appearance text
-Browser("Home").Page("Home").WebElement("Theme List Value").Click						'Select the value from the variable
-Browser("Home").Page("Home").SAPUIButton("Save").Click									'Click the Save button
-Browser("Home").Page("Home").SAPUIButton("More groups").Click							'Click the down arrow to bring up the jump to functionality
+Browser("Home").Page("Home").WebElement("Theme List Value").Click						'Select the value from the variable, linked in the OR
+If AIUtil("button", "Save").Exist Then
+	AIUtil("button", "Save").Click
+ElseIf AIUtil.FindTextBlock("Save").Exist Then
+	AIUtil.FindTextBlock("Save").Click
+Else
+	Browser("Home").Page("Home").SAPUIButton("Save").Click									'Click the Save button
+End If
+'15.0.2 Browser("Home").Page("Home").SAPUIButton("More groups").Click							'Click the down arrow to bring up the jump to functionality
+AIUtil("down_triangle", micAnyText, micFromBottom, 1).Click
 if AIUtil.FindTextBlock("IT Service Management").Exist then
 	AIUtil.FindTextBlock("IT Service Management").Click
 Else
@@ -113,7 +120,8 @@ Browser("Home").Page("Home").SAPUIButton("Yes").Click									'Click the Yes but
 Do																							'Wait for the system to finish processing before going on
 	wait(1)	
 Loop Until AIUtil.FindText("Withdrawing Incident").Exist(0) = False
-Browser("Home").Page("Home").WebElement("My Incidents").Click							'CLick the My Incidents object
+'15.0.2 Browser("Home").Page("Home").WebElement("My Incidents").Click							'CLick the My Incidents object
+AIUtil.FindTextBlock("My Incidents").Click
 AIUtil.FindTextBlock("Home").Click															'Click the Home text
 Browser("Home").Page("Home").SAPUIButton("Me Button").Click							'Click the button to bring up the user menu
 AIUtil.FindTextBlock("Sign Out").Click														'Click the Sign Out text
